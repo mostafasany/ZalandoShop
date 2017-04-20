@@ -38,6 +38,7 @@
     <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\PageType.cs" />
     <Compile Include="Response\ArticleResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
