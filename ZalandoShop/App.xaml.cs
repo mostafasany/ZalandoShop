@@ -1,6 +1,7 @@
 ﻿using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -23,6 +24,7 @@ namespace ZalandoShop
             this.Suspending += OnSuspending;
         }
 
+        Frame rootFrame;
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.
@@ -30,7 +32,7 @@ namespace ZalandoShop
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
@@ -49,6 +51,9 @@ namespace ZalandoShop
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
+            Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
+
+            Windows.UI.Core.SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
 
             if (e.PrelaunchActivated == false)
             {
@@ -62,6 +67,13 @@ namespace ZalandoShop
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
+        }
+
+        private void OnBackRequested(object sender, BackRequestedEventArgs e)
+        {
+
+            if (rootFrame.CanGoBack)
+                rootFrame.GoBack();
         }
 
         /// <summary>

@@ -13,6 +13,7 @@ namespace ZalandoShop.ViewModels.ViewModel
         {
             _facetService = facetService;
             _navigationService = navigationService;
+            PopulateGenderList();
         }
 
         #region Members
@@ -22,6 +23,20 @@ namespace ZalandoShop.ViewModels.ViewModel
         #endregion
 
         #region Properties
+
+        private List<Models.Model.Gender> _GenderList;
+        public List<Models.Model.Gender> GenderList
+        {
+            get { return _GenderList; }
+            set { _GenderList = value; RaisePropertyChanged(); }
+        }
+
+        private Gender _SelectedGender;
+        public Gender SelectedGender
+        {
+            get { return _SelectedGender; }
+            set { _SelectedGender = value; RaisePropertyChanged(); }
+        }
 
         private List<Models.Model.Facet> _Facets;
         public List<Models.Model.Facet> Facets
@@ -58,6 +73,18 @@ namespace ZalandoShop.ViewModels.ViewModel
 
         #endregion
 
+        #region Private Methods
+
+        private void PopulateGenderList()
+        {
+            GenderList = new List<Gender>();
+            GenderList.Add(new Gender { Id = 1, Name = "MEN", Image = "/Assets/Gender/Male.png" });
+            GenderList.Add(new Gender { Id = 2, Name = "WOMEN", Image = "/Assets/Gender/Female.png" });
+            SelectedGender = GenderList.FirstOrDefault();
+        }
+
+        #endregion
+
         #region Commands
 
         #region OnIntializeCommand
@@ -79,7 +106,12 @@ namespace ZalandoShop.ViewModels.ViewModel
             {
                 IsLoading = true;
                 IsPageEnabled = false;
-                Facets = await _facetService.GetAllBrandFamilyFacetAsync();
+                if (Facets == null || Facets.Count == 0)
+                {
+                    Facets = await _facetService.GetAllBrandFamilyFacetAsync();
+                    FilterText = "";
+                }
+
             }
             catch (System.Exception)
             {
@@ -106,23 +138,30 @@ namespace ZalandoShop.ViewModels.ViewModel
             }
         }
 
-        private async void OnFacetSelected(Facet facet)
+        private void OnFacetSelected(Facet facet)
         {
-            try
-            {
-                IsLoading = true;
-                IsPageEnabled = false;
-                _navigationService.Navigate(Models.Enum.PageType.ArticlesSearchResult);
-            }
-            catch (System.Exception)
-            {
-            }
-            finally
-            {
-                IsLoading = false;
-                IsPageEnabled = true;
-            }
+            var paramters = new FacetSearch { Gender = SelectedGender, Search = facet.Name };
+            _navigationService.Navigate(Models.Enum.PageType.ArticlesSearchResult, paramters);
+        }
+        #endregion
 
+        #region OnSearchCommand
+
+        RelayCommand _OnSearchCommand;
+        public RelayCommand OnSearchCommand
+        {
+            get
+            {
+                if (_OnSearchCommand == null)
+                    _OnSearchCommand = new RelayCommand(OnSearch);
+                return _OnSearchCommand;
+            }
+        }
+
+        private void OnSearch()
+        {
+            var paramters = new FacetSearch { Gender = SelectedGender, Search = FilterText };
+            _navigationService.Navigate(Models.Enum.PageType.ArticlesSearchResult, paramters);
         }
         #endregion
 

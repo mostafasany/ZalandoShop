@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace ZalandoShop.Models.Model
+﻿namespace ZalandoShop.Models.Model
 {
     public class Facet
     {
