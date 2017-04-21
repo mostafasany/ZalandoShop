@@ -1,8 +1,10 @@
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
+using ZalandoShop.Core.Services.Navigation;
 using ZalandoShop.Services.Services.Navigation;
+using ZalandoShop.ViewModels.ViewModel;
 
-namespace ZalandoShop.ViewModels.ViewModel
+namespace ZalandoShop.Core
 {
     public class ViewModelLocator
     {
@@ -21,7 +23,7 @@ namespace ZalandoShop.ViewModels.ViewModel
 
         void RegisterServices()
         {
-            // SimpleIoc.Default.Register<INavigationService, NavigationService>();
+            SimpleIoc.Default.Register<INavigationService, NavigationService>();
         }
         public ArticleSearchViewModel ArticleSearchViewModel
         {
