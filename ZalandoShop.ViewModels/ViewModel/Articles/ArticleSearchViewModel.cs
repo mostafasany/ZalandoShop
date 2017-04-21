@@ -1,22 +1,24 @@
 using GalaSoft.MvvmLight.Command;
 using System.Collections.Generic;
 using System.Linq;
+using ZalandoShop.Models.Model;
 using ZalandoShop.Services.Services.Facet;
+using ZalandoShop.Services.Services.Navigation;
 
 namespace ZalandoShop.ViewModels.ViewModel
 {
     public class ArticleSearchViewModel : BaseViewModel
     {
-        public ArticleSearchViewModel(IFacetService facetService)
+        public ArticleSearchViewModel(IFacetService facetService, INavigationService navigationService)
         {
             _facetService = facetService;
-
+            _navigationService = navigationService;
         }
 
         #region Members
 
         IFacetService _facetService;
-
+        INavigationService _navigationService;
         #endregion
 
         #region Properties
@@ -78,6 +80,39 @@ namespace ZalandoShop.ViewModels.ViewModel
                 IsLoading = true;
                 IsPageEnabled = false;
                 Facets = await _facetService.GetAllBrandFamilyFacetAsync();
+            }
+            catch (System.Exception)
+            {
+            }
+            finally
+            {
+                IsLoading = false;
+                IsPageEnabled = true;
+            }
+
+        }
+        #endregion
+
+        #region OnFacetSelectedCommand
+
+        RelayCommand<Facet> _OnFacetSelectedCommand;
+        public RelayCommand<Facet> OnFacetSelectedCommand
+        {
+            get
+            {
+                if (_OnFacetSelectedCommand == null)
+                    _OnFacetSelectedCommand = new RelayCommand<Facet>(OnFacetSelected);
+                return _OnFacetSelectedCommand;
+            }
+        }
+
+        private async void OnFacetSelected(Facet facet)
+        {
+            try
+            {
+                IsLoading = true;
+                IsPageEnabled = false;
+                _navigationService.Navigate(Models.Enum.PageType.ArticlesSearchResult);
             }
             catch (System.Exception)
             {

@@ -16,6 +16,7 @@ namespace ZalandoShop.Core.Services.Navigation
         public NavigationService()
         {
             rootFrame = Window.Current.Content as Frame;
+            PagesByKey = new Dictionary<string, Type>();
             SetupNavigation();
         }
 
@@ -35,16 +36,16 @@ namespace ZalandoShop.Core.Services.Navigation
 
         #endregion
 
-        public void Navigate(PageType type)
+        public void Navigate(PageType type, object parameter = null)
         {
             string pageKey = type.ToString();
-            if (PagesByKey.ContainsKey(pageKey))
+            if (!PagesByKey.ContainsKey(pageKey))
             {
                 throw new ArgumentException(string.Format("No such page: {0} ", pageKey), "pageKey");
             }
 
             Type pageType = PagesByKey[pageKey];
-            rootFrame.Navigate(pageType);
+            rootFrame.Navigate(pageType, parameter);
         }
 
         public void NavigateBack()

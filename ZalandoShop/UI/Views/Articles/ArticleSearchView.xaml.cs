@@ -41,6 +41,7 @@ namespace ZalandoShop.UI.Views.Articles
 
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
+            vm.OnFacetSelectedCommand.Execute(args.SelectedItem as Models.Model.Facet);
         }
     }
 }
