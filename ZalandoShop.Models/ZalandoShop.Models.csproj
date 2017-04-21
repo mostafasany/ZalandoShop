@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enum\PageType.cs" />
+    <Compile Include="Model\Facet.cs" />
     <Compile Include="Model\Article.cs" />
     <Compile Include="Response\Articles\ArticleResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -46,7 +47,6 @@
     <Compile Include="Response\Articles\BrandResponse.cs" />
     <Compile Include="Response\Facets\Facet.cs" />
     <Compile Include="Response\Facets\FacetResponse.cs" />
-    <Compile Include="Response\Facets\FacetsResponse.cs" />
     <Compile Include="Response\Articles\ImageResponse.cs" />
     <Compile Include="Response\Articles\MediaResponse.cs" />
     <Compile Include="Response\Articles\OriginalpriceResponse.cs" />

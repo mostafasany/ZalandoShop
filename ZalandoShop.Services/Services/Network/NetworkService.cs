@@ -30,10 +30,10 @@ namespace ZalandoShop.Services.Services.Network
                 if (result.IsSuccessStatusCode)
                 {
                     var responseObject = JsonConvert.DeserializeObject<T>(responseJson);
-                    return new HttpResult<T>(responseObject);
+                    return new HttpResult<T>(responseObject, result);
                 }
 
-                return new HttpResult<T>(null);
+                return new HttpResult<T>(null, result);
             }
             catch (Exception ex)
             {
