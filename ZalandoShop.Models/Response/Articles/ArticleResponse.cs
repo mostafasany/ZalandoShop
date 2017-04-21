@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ZalandoShop.Models.Response
 {
     public class ArticlesResponse
     {
-        public ArticleResponse[] content { get; set; }
+        public List<ArticleResponse> content { get; set; }
         public int totalElements { get; set; }
         public int totalPages { get; set; }
         public int page { get; set; }
@@ -28,7 +29,7 @@ namespace ZalandoShop.Models.Response
         public string[] ageGroups { get; set; }
         public BrandResponse brand { get; set; }
         public string[] categoryKeys { get; set; }
-        public Attribute[] attributes { get; set; }
+        public AttributeResponse[] attributes { get; set; }
         public UnitResponse[] units { get; set; }
         public MediaResponse media { get; set; }
     }

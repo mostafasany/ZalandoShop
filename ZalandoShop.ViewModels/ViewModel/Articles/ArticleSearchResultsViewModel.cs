@@ -66,6 +66,7 @@ namespace ZalandoShop.ViewModels.ViewModel
             {
                 IsLoading = true;
                 IsPageEnabled = false;
+                Articles = await _articleService.GetFilterdArticleAsync(search.Search, "", search.Gender.Name, 1, 20);
             }
             catch (System.Exception)
             {
