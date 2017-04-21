@@ -2,6 +2,7 @@ using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 using ZalandoShop.Core.Services.Navigation;
 using ZalandoShop.Services.Services.Navigation;
+using ZalandoShop.Services.Services.Network;
 using ZalandoShop.ViewModels.ViewModel;
 
 namespace ZalandoShop.Core
@@ -24,6 +25,7 @@ namespace ZalandoShop.Core
         void RegisterServices()
         {
             SimpleIoc.Default.Register<INavigationService, NavigationService>();
+            SimpleIoc.Default.Register<INetworkService, NetworkService>();
         }
         public ArticleSearchViewModel ArticleSearchViewModel
         {
