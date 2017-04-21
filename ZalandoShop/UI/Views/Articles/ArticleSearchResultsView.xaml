@@ -6,9 +6,30 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    IsEnabled="{Binding IsPageEnabled}"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     DataContext="{Binding Source={StaticResource Locator}, Path=ArticleSearchResultsViewModel}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ProgressBar Grid.Row="0" IsIndeterminate="{Binding IsLoading}"  Margin="0,10,0,0" Background="Transparent"></ProgressBar>
+
+        <GridView Grid.Row="1"  Margin="10,10,0,10" ItemsSource="{Binding Articles}"
+                  SelectedItem="{Binding SelectedArticles}">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                        <Image Margin="10,0,10,0" Width="50" Height="50" Source="{Binding Image}" VerticalAlignment="Center"></Image>
+                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
 
     </Grid>
 </Page>
