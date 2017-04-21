@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ZalandoShop.Models.Model;
 using ZalandoShop.Models.Response.Facets;
 using ZalandoShop.Services.Services.Network;
+using ZalandoShop.Services.Translators;
 
 namespace ZalandoShop.Services.Services.Facet
 {
@@ -38,9 +39,11 @@ namespace ZalandoShop.Services.Services.Facet
             if (AllFacets == null || AllFacets.Count == 0)
                 await GetAllFacetAsync();
 
-            var brandFamiltFacets = AllFacets.Where(a => a.filter == "brandfamily");
-            //Should make transaltion here
-            return new List<Models.Model.Facet>();
+            FacetResponse brandFamiltFacets = AllFacets.FirstOrDefault(a => a.filter == "brandfamily");
+
+            var facets = FacetTranslators.Translate(brandFamiltFacets);
+
+            return facets;
         }
 
     }

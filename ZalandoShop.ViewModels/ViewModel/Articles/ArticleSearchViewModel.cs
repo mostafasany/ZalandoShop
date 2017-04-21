@@ -1,4 +1,5 @@
 using GalaSoft.MvvmLight;
+using System.Collections.Generic;
 using ZalandoShop.Services.Services.Facet;
 
 namespace ZalandoShop.ViewModels.ViewModel
@@ -18,6 +19,13 @@ namespace ZalandoShop.ViewModels.ViewModel
         #endregion
 
         #region Properties
+
+        private List<Models.Model.Facet> _Facets;
+        public List<Models.Model.Facet> Facets
+        {
+            get { return _Facets; }
+            set { _Facets = value; }
+        }
 
         #endregion
 

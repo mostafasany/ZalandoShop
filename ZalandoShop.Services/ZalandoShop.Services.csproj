@@ -51,6 +51,7 @@
     <Compile Include="Services\Network\HTTPResult.cs" />
     <Compile Include="Services\Network\NetworkService.cs" />
     <Compile Include="Services\Network\INetworkService.cs" />
+    <Compile Include="Translators\FacetTranslators.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
