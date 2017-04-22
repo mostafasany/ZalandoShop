@@ -26,7 +26,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <AutoSuggestBox  x:Name="autoSuggestBox" PlaceholderText="Search for Brands" QueryIcon="Find" Width="500"
+        <AutoSuggestBox  x:Name="autoSuggestBox" x:Uid="SearchBar" QueryIcon="Find" Width="500"
                 TextChanged="AutoSuggestBox_TextChanged" 
                 SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>
 
@@ -65,6 +65,6 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button  Grid.Row="4" Content="Search" HorizontalAlignment="Center" Margin="0,10,0,10"  Command="{Binding OnSearchCommand}"></Button>
+        <Button  Grid.Row="4" x:Uid="Search" HorizontalAlignment="Center" Margin="0,10,0,10"  Command="{Binding OnSearchCommand}"></Button>
     </Grid>
 </Page>
