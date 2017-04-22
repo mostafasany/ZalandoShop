@@ -100,6 +100,7 @@
     <Compile Include="Core\ViewModelLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="UI\Helpers\UIHelpers.cs" />
     <Compile Include="UI\Views\Articles\ArticleSearchResultsView.xaml.cs">
       <DependentUpon>ArticleSearchResultsView.xaml</DependentUpon>
     </Compile>

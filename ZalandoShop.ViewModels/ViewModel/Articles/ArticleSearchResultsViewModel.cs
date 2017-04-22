@@ -1,5 +1,6 @@
 using GalaSoft.MvvmLight.Command;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using ZalandoShop.Models.Model;
 using ZalandoShop.Services.Services.Article;
@@ -29,11 +30,15 @@ namespace ZalandoShop.ViewModels.ViewModel
 
         #region Properties
 
-        private List<Models.Model.Article> _Articles;
-        public List<Models.Model.Article> Articles
+        private ObservableCollection<Models.Model.Article> _Articles;
+        public ObservableCollection<Models.Model.Article> Articles
         {
             get { return _Articles; }
-            set { _Articles = value; RaisePropertyChanged(); }
+            set
+            {
+                _Articles = value;
+                RaisePropertyChanged();
+            }
         }
 
         private Article _SelectedArticles;
@@ -80,7 +85,8 @@ namespace ZalandoShop.ViewModels.ViewModel
                 FacetSearch = search;
                 IsLoading = true;
                 IsPageEnabled = false;
-                Articles = await _articleService.GetFilterdArticleAsync(FacetSearch.Search, "", FacetSearch.Gender.Name, pageNo, pageSize);
+                var articles = await _articleService.GetFilterdArticleAsync(FacetSearch.Search, "", FacetSearch.Gender.Name, pageNo, pageSize);
+                Articles = new ObservableCollection<Article>(articles);
             }
             catch (System.Exception ex)
             {
@@ -96,7 +102,7 @@ namespace ZalandoShop.ViewModels.ViewModel
 
         #endregion
 
-        #region OnIntializeCommand
+        #region OnLoadMoreCommand
 
         RelayCommand _OnLoadMoreCommand;
         public RelayCommand OnLoadMoreCommand
@@ -115,7 +121,15 @@ namespace ZalandoShop.ViewModels.ViewModel
             {
                 IsLoading = true;
                 IsPageEnabled = false;
-                Articles = await _articleService.GetFilterdArticleAsync(FacetSearch.Search, "", FacetSearch.Gender.Name, pageNo, pageSize);
+                pageNo++;
+                var articles = await _articleService.GetFilterdArticleAsync(FacetSearch.Search, "", FacetSearch.Gender.Name, pageNo, pageSize);
+                if (articles != null)
+                {
+                    foreach (var article in articles)
+                    {
+                        Articles.Add(article);
+                    }
+                }
             }
             catch (System.Exception ex)
             {
