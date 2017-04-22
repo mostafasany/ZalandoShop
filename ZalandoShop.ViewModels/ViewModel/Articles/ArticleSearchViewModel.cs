@@ -6,6 +6,7 @@ using ZalandoShop.Services.Services.DialogService;
 using ZalandoShop.Services.Services.Facet;
 using ZalandoShop.Services.Services.Internet;
 using ZalandoShop.Services.Services.Navigation;
+using ZalandoShop.ViewModels.strings.en_US;
 
 namespace ZalandoShop.ViewModels.ViewModel
 {
@@ -113,7 +114,7 @@ namespace ZalandoShop.ViewModels.ViewModel
             {
                 if (!_internetService.IsInternet())
                 {
-                    await _dialogService.ShowMessage("No internet connection", "Error!");
+                    await _dialogService.ShowMessage(Resource.NoInternet, Resource.Error);
                     return;
                 }
                 IsLoading = true;
@@ -127,7 +128,7 @@ namespace ZalandoShop.ViewModels.ViewModel
             }
             catch (System.Exception ex)
             {
-                await _dialogService.ShowMessage(ex.Message, "Error!");
+                await _dialogService.ShowMessage(ex.Message, Resource.Error);
             }
             finally
             {
