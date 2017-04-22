@@ -48,6 +48,7 @@
     <Compile Include="Services\Facet\IFacetService.cs" />
     <Compile Include="Services\Article\ArticleService.cs" />
     <Compile Include="Services\Article\IArticleService.cs" />
+    <Compile Include="Services\Internet\IInternetService.cs" />
     <Compile Include="Services\Navigation\INavigationService.cs" />
     <Compile Include="Services\Network\HTTPResult.cs" />
     <Compile Include="Services\Network\NetworkService.cs" />

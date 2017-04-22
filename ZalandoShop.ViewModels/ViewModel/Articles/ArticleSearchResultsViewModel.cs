@@ -1,10 +1,9 @@
 using GalaSoft.MvvmLight.Command;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using ZalandoShop.Models.Model;
 using ZalandoShop.Services.Services.Article;
 using ZalandoShop.Services.Services.DialogService;
+using ZalandoShop.Services.Services.Internet;
 using ZalandoShop.Services.Services.Navigation;
 
 namespace ZalandoShop.ViewModels.ViewModel
@@ -12,11 +11,12 @@ namespace ZalandoShop.ViewModels.ViewModel
     public class ArticleSearchResultsViewModel : BaseViewModel
     {
         public ArticleSearchResultsViewModel(IArticleService articleService,
-            INavigationService navigationService, IDialogService dialogService)
+            INavigationService navigationService, IDialogService dialogService, IInternetService internetService)
         {
             _articleService = articleService;
             _navigationService = navigationService;
             _dialogService = dialogService;
+            _internetService = internetService;
         }
 
         #region Members
@@ -24,8 +24,10 @@ namespace ZalandoShop.ViewModels.ViewModel
         IArticleService _articleService;
         INavigationService _navigationService;
         IDialogService _dialogService;
+        IInternetService _internetService;
         int pageNo = 1;
         const int pageSize = 20;
+
         #endregion
 
         #region Properties
@@ -82,6 +84,11 @@ namespace ZalandoShop.ViewModels.ViewModel
         {
             try
             {
+                if (!_internetService.IsInternet())
+                {
+                    await _dialogService.ShowMessage("No internet connection", "Error!");
+                    return;
+                }
                 FacetSearch = search;
                 IsLoading = true;
                 IsPageEnabled = false;
@@ -119,6 +126,11 @@ namespace ZalandoShop.ViewModels.ViewModel
         {
             try
             {
+                if (!_internetService.IsInternet())
+                {
+                    await _dialogService.ShowMessage("No internet connection", "Error!");
+                    return;
+                }
                 IsLoading = true;
                 IsPageEnabled = false;
                 pageNo++;

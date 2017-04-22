@@ -4,6 +4,7 @@ using System.Linq;
 using ZalandoShop.Models.Model;
 using ZalandoShop.Services.Services.DialogService;
 using ZalandoShop.Services.Services.Facet;
+using ZalandoShop.Services.Services.Internet;
 using ZalandoShop.Services.Services.Navigation;
 
 namespace ZalandoShop.ViewModels.ViewModel
@@ -11,11 +12,12 @@ namespace ZalandoShop.ViewModels.ViewModel
     public class ArticleSearchViewModel : BaseViewModel
     {
         public ArticleSearchViewModel(IFacetService facetService,
-            INavigationService navigationService, IDialogService dialogService)
+            INavigationService navigationService, IDialogService dialogService, IInternetService internetService)
         {
             _facetService = facetService;
             _navigationService = navigationService;
             _dialogService = dialogService;
+            _internetService = internetService;
             PopulateGenderList();
         }
 
@@ -24,6 +26,7 @@ namespace ZalandoShop.ViewModels.ViewModel
         IFacetService _facetService;
         INavigationService _navigationService;
         IDialogService _dialogService;
+        IInternetService _internetService;
         #endregion
 
         #region Properties
@@ -108,6 +111,11 @@ namespace ZalandoShop.ViewModels.ViewModel
         {
             try
             {
+                if (!_internetService.IsInternet())
+                {
+                    await _dialogService.ShowMessage("No internet connection", "Error!");
+                    return;
+                }
                 IsLoading = true;
                 IsPageEnabled = false;
                 if (Facets == null || Facets.Count == 0)
@@ -126,7 +134,6 @@ namespace ZalandoShop.ViewModels.ViewModel
                 IsLoading = false;
                 IsPageEnabled = true;
             }
-
         }
 
         #endregion
