@@ -1,7 +1,9 @@
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
+using ZalandoShop.Core.Services.Dialog;
 using ZalandoShop.Core.Services.Navigation;
 using ZalandoShop.Services.Services.Article;
+using ZalandoShop.Services.Services.DialogService;
 using ZalandoShop.Services.Services.Facet;
 using ZalandoShop.Services.Services.Navigation;
 using ZalandoShop.Services.Services.Network;
@@ -27,6 +29,7 @@ namespace ZalandoShop.Core
         void RegisterServices()
         {
             SimpleIoc.Default.Register<INavigationService, NavigationService>();
+            SimpleIoc.Default.Register<IDialogService, DialogService>();
             SimpleIoc.Default.Register<INetworkService, NetworkService>();
             SimpleIoc.Default.Register<IArticleService, ArticleService>();
             SimpleIoc.Default.Register<IFacetService, FacetService>();

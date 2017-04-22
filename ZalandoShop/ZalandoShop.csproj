@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Core\Services\Dialog\DialogService.cs" />
     <Compile Include="Core\Services\Navigation\NavigationService.cs" />
     <Compile Include="Core\ViewModelLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

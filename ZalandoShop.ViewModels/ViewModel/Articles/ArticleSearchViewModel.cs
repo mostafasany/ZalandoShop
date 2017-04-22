@@ -2,6 +2,7 @@ using GalaSoft.MvvmLight.Command;
 using System.Collections.Generic;
 using System.Linq;
 using ZalandoShop.Models.Model;
+using ZalandoShop.Services.Services.DialogService;
 using ZalandoShop.Services.Services.Facet;
 using ZalandoShop.Services.Services.Navigation;
 
@@ -9,10 +10,12 @@ namespace ZalandoShop.ViewModels.ViewModel
 {
     public class ArticleSearchViewModel : BaseViewModel
     {
-        public ArticleSearchViewModel(IFacetService facetService, INavigationService navigationService)
+        public ArticleSearchViewModel(IFacetService facetService,
+            INavigationService navigationService, IDialogService dialogService)
         {
             _facetService = facetService;
             _navigationService = navigationService;
+            _dialogService = dialogService;
             PopulateGenderList();
         }
 
@@ -20,6 +23,7 @@ namespace ZalandoShop.ViewModels.ViewModel
 
         IFacetService _facetService;
         INavigationService _navigationService;
+        IDialogService _dialogService;
         #endregion
 
         #region Properties
@@ -113,8 +117,9 @@ namespace ZalandoShop.ViewModels.ViewModel
                 }
 
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
+                await _dialogService.ShowMessage(ex.Message, "Error!");
             }
             finally
             {
@@ -123,6 +128,7 @@ namespace ZalandoShop.ViewModels.ViewModel
             }
 
         }
+
         #endregion
 
         #region OnFacetSelectedCommand
@@ -163,6 +169,7 @@ namespace ZalandoShop.ViewModels.ViewModel
             var paramters = new FacetSearch { Gender = SelectedGender, Search = FilterText };
             _navigationService.Navigate(Models.Enum.PageType.ArticlesSearchResult, paramters);
         }
+
         #endregion
 
         #endregion
