@@ -26,7 +26,7 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="2"  Margin="10,10,0,10" HorizontalAlignment="Left" >
             <TextBlock Margin="0,10,10,0" VerticalAlignment="Top" x:Uid="FilteredBy"></TextBlock>
-            <GridView  VerticalAlignment="Center" ItemsSource="{Binding SearchWords}"
+            <GridView  VerticalAlignment="Center" SelectionMode="None" ItemsSource="{Binding SearchWords}"
                   SelectedItem="{Binding SelectedSearchWords,Mode=TwoWay}" ItemTemplate="{StaticResource SearchWordTemplate}">
             </GridView>
         </StackPanel>

@@ -11,19 +11,11 @@ namespace ZalandoShop.UI.Views.Articles
     public sealed partial class ArticleSearchView : Page
     {
         ArticleSearchViewModel vm;
+
         public ArticleSearchView()
         {
             this.InitializeComponent();
             vm = this.DataContext as ArticleSearchViewModel;
-        }
-
-        private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        {
-            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
-            {
-                vm.FilterText = sender.Text;
-                sender.ItemsSource = vm.FilteredFacets;
-            }
         }
 
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)

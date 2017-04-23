@@ -28,8 +28,10 @@
         </Grid.RowDefinitions>
 
         <Image Grid.Row="0" Height="80" Source="/Assets/Zalando_Logo.png"></Image>
-        <AutoSuggestBox Grid.Row="1" Margin="10,10" x:Name="autoSuggestBox" x:Uid="SearchBar" QueryIcon="Find" Width="450"
-                TextChanged="AutoSuggestBox_TextChanged" 
+        <AutoSuggestBox Text="{Binding FilterText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                        ItemsSource="{Binding FilteredFacets}"
+                        Grid.Row="1" Margin="10,10" 
+                        x:Name="autoSuggestBox" x:Uid="SearchBar" QueryIcon="Find" Width="450"           
                 SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>
 
         <ProgressBar Grid.Row="2" IsIndeterminate="{Binding IsLoading}" Background="Transparent"></ProgressBar>

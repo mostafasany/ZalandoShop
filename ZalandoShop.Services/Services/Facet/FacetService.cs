@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using ZalandoShop.Models.Model;
 using ZalandoShop.Models.Response.Facets;
 using ZalandoShop.Services.Services.Network;
 using ZalandoShop.Services.Translators;
@@ -37,7 +34,6 @@ namespace ZalandoShop.Services.Services.Facet
             }
             return AllFacets;
         }
-
 
     }
 }
