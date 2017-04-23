@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="FilteredBy.Text" xml:space="preserve">
+    <value>Filtered By : </value>
+  </data>
   <data name="NoArticlesFound.Text" xml:space="preserve">
     <value>No Products Found</value>
   </data>

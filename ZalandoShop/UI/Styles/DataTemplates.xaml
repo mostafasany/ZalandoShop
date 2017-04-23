@@ -62,4 +62,15 @@
         </Grid>
     </DataTemplate>
 
+    <DataTemplate x:Name="SearchWordTemplate">
+        <Border BorderBrush="Black" BorderThickness="1">
+            <Grid Margin="5,10" Width="100">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            </Grid>
+        </Border>
+    </DataTemplate>
+
 </ResourceDictionary>

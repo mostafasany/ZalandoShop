@@ -40,8 +40,8 @@ namespace ZalandoShop.ViewModels.ViewModel
             set { _NoArticles = value; RaisePropertyChanged(); }
         }
 
-        private ObservableCollection<Models.Model.Article> _Articles;
-        public ObservableCollection<Models.Model.Article> Articles
+        private ObservableCollection<Article> _Articles;
+        public ObservableCollection<Article> Articles
         {
             get { return _Articles; }
             set
@@ -66,11 +66,41 @@ namespace ZalandoShop.ViewModels.ViewModel
             set { _FacetSearch = value; }
         }
 
+        private ObservableCollection<SearchWord> _SearchWords;
+        public ObservableCollection<SearchWord> SearchWords
+        {
+            get { return _SearchWords; }
+            set
+            {
+                _SearchWords = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private SearchWord _SelectedSearchWords;
+        public SearchWord SelectedSearchWords
+        {
+            get { return _SelectedSearchWords; }
+            set
+            {
+                _SelectedSearchWords = value;
+                RaisePropertyChanged();
+            }
+        }
+
         #endregion
 
         #region Private Methods
 
-
+        void LoadSearchWords(FacetSearch facetSearch)
+        {
+            SearchWords = new ObservableCollection<SearchWord>();
+            SearchWords.Add(new SearchWord { Id = 1, Name = facetSearch.Gender.Name });
+            if (facetSearch.Facet != null)
+                SearchWords.Add(new SearchWord { Id = 2, Name = facetSearch.Facet.Name });
+            if (facetSearch.Search != null)
+                SearchWords.Add(new SearchWord { Id = 3, Name = facetSearch.Search });
+        }
 
         #endregion
 
@@ -102,6 +132,9 @@ namespace ZalandoShop.ViewModels.ViewModel
                 FacetSearch = search;
                 IsLoading = true;
                 IsPageEnabled = false;
+
+                LoadSearchWords(search);
+
                 var articles = await _articleService.GetFilterdArticleAsync(FacetSearch, pageNo, pageSize);
                 if (articles != null)
                 {
