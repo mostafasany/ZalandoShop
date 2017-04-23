@@ -151,8 +151,14 @@ namespace ZalandoShop.ViewModels.ViewModel
             }
         }
 
-        private void OnFacetSelected(object obj)
+        private async void OnFacetSelected(object obj)
         {
+            if (!_internetService.IsInternet())
+            {
+                await _dialogService.ShowMessage(Resource.NoInternet, Resource.Error);
+                return;
+            }
+
             if (obj is Facet)
             {
                 var facet = obj as Facet;
@@ -175,8 +181,14 @@ namespace ZalandoShop.ViewModels.ViewModel
             }
         }
 
-        private void OnSearch()
+        private async void OnSearch()
         {
+            if (!_internetService.IsInternet())
+            {
+                await _dialogService.ShowMessage(Resource.NoInternet, Resource.Error);
+                return;
+            }
+
             var paramters = new FacetSearch { Gender = SelectedGender, Facet = null, Search = FilterText };
             _navigationService.Navigate(Models.Enum.PageType.ArticlesSearchResult, paramters);
         }

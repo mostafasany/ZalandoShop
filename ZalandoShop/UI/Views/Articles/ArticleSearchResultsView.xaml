@@ -26,7 +26,7 @@
 
         <Button Grid.Row="1" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Right"
                 Background="Transparent" Foreground="Transparent" ToolTipService.ToolTip="Refresh"
-                Command="{Binding OnRefreshCommand}">
+                Command="{Binding OnRefreshCommand}" Margin="0,0,10,0">
             <Image Source="/Assets/Icons/refresh.png"></Image>
         </Button>
 
