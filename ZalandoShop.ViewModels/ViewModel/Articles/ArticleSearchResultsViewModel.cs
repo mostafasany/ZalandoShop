@@ -93,7 +93,7 @@ namespace ZalandoShop.ViewModels.ViewModel
                 FacetSearch = search;
                 IsLoading = true;
                 IsPageEnabled = false;
-                var articles = await _articleService.GetFilterdArticleAsync(FacetSearch.Search, "", FacetSearch.Gender.Name, pageNo, pageSize);
+                var articles = await _articleService.GetFilterdArticleAsync(FacetSearch, pageNo, pageSize);
                 Articles = new ObservableCollection<Article>(articles);
             }
             catch (System.Exception ex)
@@ -135,7 +135,7 @@ namespace ZalandoShop.ViewModels.ViewModel
                 IsLoading = true;
                 IsPageEnabled = false;
                 pageNo++;
-                var articles = await _articleService.GetFilterdArticleAsync(FacetSearch.Search, "", FacetSearch.Gender.Name, pageNo, pageSize);
+                var articles = await _articleService.GetFilterdArticleAsync(FacetSearch, pageNo, pageSize);
                 if (articles != null)
                 {
                     foreach (var article in articles)

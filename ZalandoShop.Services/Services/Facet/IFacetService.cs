@@ -5,6 +5,6 @@ namespace ZalandoShop.Services.Services.Facet
 {
     public interface IFacetService
     {
-        Task<List<Models.Model.Facet>> GetAllBrandFamilyFacetAsync();
+        Task<List<Models.Model.Facet>> GetAllFacetAsync();
     }
 }

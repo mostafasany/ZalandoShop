@@ -5,21 +5,25 @@ namespace ZalandoShop.Services.Translators
 {
     static public class FacetTranslators
     {
-        static public Facet Translate(Models.Response.Facets.Facet response)
+        static public Facet Translate(Models.Response.Facets.Facet response, string filter)
         {
             return new Facet
             {
                 Key = response.key,
-                Name = response.displayName
+                Name = response.displayName,
+                Filter = filter,
             };
         }
 
-        static public List<Models.Model.Facet> Translate(Models.Response.Facets.FacetResponse response)
+        static public List<Facet> Translate(List<Models.Response.Facets.FacetResponse> response)
         {
-            List<Models.Model.Facet> translatedFacets = new List<Facet>();
-            foreach (var item in response.facets)
+            List<Facet> translatedFacets = new List<Facet>();
+            foreach (var facetResponse in response)
             {
-                translatedFacets.Add(Translate(item));
+                foreach (var facet in facetResponse.facets)
+                {
+                    translatedFacets.Add(Translate(facet, facetResponse.filter));
+                }
             }
             return translatedFacets;
         }

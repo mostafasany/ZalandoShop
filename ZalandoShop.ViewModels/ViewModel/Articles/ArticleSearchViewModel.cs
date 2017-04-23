@@ -86,8 +86,8 @@ namespace ZalandoShop.ViewModels.ViewModel
         private void PopulateGenderList()
         {
             GenderList = new List<Gender>();
-            GenderList.Add(new Gender { Id = 1, Name = "MEN", Image = "/Assets/Gender/Male.png" });
-            GenderList.Add(new Gender { Id = 2, Name = "WOMEN", Image = "/Assets/Gender/Female.png" });
+            GenderList.Add(new Gender { Id = "male", Name = "MEN", Image = "/Assets/Gender/Male.png" });
+            GenderList.Add(new Gender { Id = "female", Name = "WOMEN", Image = "/Assets/Gender/Female.png" });
             SelectedGender = GenderList.FirstOrDefault();
         }
 
@@ -121,7 +121,7 @@ namespace ZalandoShop.ViewModels.ViewModel
                 IsPageEnabled = false;
                 if (Facets == null || Facets.Count == 0)
                 {
-                    Facets = await _facetService.GetAllBrandFamilyFacetAsync();
+                    Facets = await _facetService.GetAllFacetAsync();
                     FilterText = "";
                 }
 
@@ -154,7 +154,7 @@ namespace ZalandoShop.ViewModels.ViewModel
 
         private void OnFacetSelected(Facet facet)
         {
-            var paramters = new FacetSearch { Gender = SelectedGender, Search = facet.Name };
+            var paramters = new FacetSearch { Gender = SelectedGender, Facet = facet, Search = null };
             _navigationService.Navigate(Models.Enum.PageType.ArticlesSearchResult, paramters);
         }
         #endregion
@@ -174,7 +174,7 @@ namespace ZalandoShop.ViewModels.ViewModel
 
         private void OnSearch()
         {
-            var paramters = new FacetSearch { Gender = SelectedGender, Search = FilterText };
+            var paramters = new FacetSearch { Gender = SelectedGender, Facet = null, Search = FilterText };
             _navigationService.Navigate(Models.Enum.PageType.ArticlesSearchResult, paramters);
         }
 

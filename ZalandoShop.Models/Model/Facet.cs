@@ -3,6 +3,7 @@
     public class Facet
     {
         public string Key { get; set; }
+        public string Filter { get; set; }
         public string Name { get; set; }
 
         public string NameInitital
@@ -23,7 +24,7 @@
 
         public override string ToString()
         {
-            return Name;
+            return string.Format("{0}", Name);
         }
     }
 }
