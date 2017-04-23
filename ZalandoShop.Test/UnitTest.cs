@@ -12,7 +12,7 @@ namespace ZalandoShop.Test
         [TestMethod]
         public async Task Should_Return_Products_When_Search_With_Keyword()
         {
-            IArticleService service = ServiceLocator.Current.GetInstance<IArticleService>(); //new ArticleService(new NetworkService());
+            IArticleService service = ServiceLocator.Current.GetInstance<IArticleService>();
             FacetSearch search = new FacetSearch
             {
                 Gender = new Gender() { Id = "male", Name = "Male" },
