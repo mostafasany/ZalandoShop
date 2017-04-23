@@ -22,18 +22,20 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <AutoSuggestBox  x:Name="autoSuggestBox" x:Uid="SearchBar" QueryIcon="Find" Width="500"
+        <Image Grid.Row="0" Height="80" Source="/Assets/Zalando_Logo.png"></Image>
+        <AutoSuggestBox Grid.Row="1" Margin="10,10" x:Name="autoSuggestBox" x:Uid="SearchBar" QueryIcon="Find" Width="450"
                 TextChanged="AutoSuggestBox_TextChanged" 
                 SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>
 
-        <ProgressBar Grid.Row="1" IsIndeterminate="{Binding IsLoading}"  Margin="0,10,0,0" Background="Transparent"></ProgressBar>
+        <ProgressBar Grid.Row="2" IsIndeterminate="{Binding IsLoading}" Background="Transparent"></ProgressBar>
 
-        <GridView Grid.Row="2"  Margin="10,10,0,10" ItemsSource="{Binding GenderList}"
-                  SelectedItem="{Binding SelectedGender,Mode=TwoWay}">
+        <GridView Grid.Row="3"  Margin="10,10,0,10" ItemsSource="{Binding GenderList}"
+                  SelectedItem="{Binding SelectedGender,Mode=TwoWay}" HorizontalAlignment="Left">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
@@ -44,7 +46,7 @@
             </GridView.ItemTemplate>
         </GridView>
 
-        <ListView Grid.Row="3" ItemTemplate="{StaticResource ArticleSearchTemplate}" ItemsSource="{Binding FilteredFacets}" Name="lstFilterFacts">
+        <ListView Grid.Row="4" ItemTemplate="{StaticResource ArticleSearchTemplate}" ItemsSource="{Binding FilteredFacets}" Name="lstFilterFacts">
             <i:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="SelectionChanged">
                     <core:InvokeCommandAction Command="{Binding OnFacetSelectedCommand}" 
@@ -55,6 +57,6 @@
 
         </ListView>
 
-        <Button  Grid.Row="4" x:Uid="Search"  Style="{StaticResource MainButtonStyle}" HorizontalAlignment="Center" Margin="0,10,0,10"  Command="{Binding OnSearchCommand}"></Button>
+        <Button  Grid.Row="5" x:Uid="Search"  Style="{StaticResource MainButtonStyle}" HorizontalAlignment="Center" Margin="0,10,0,10"  Command="{Binding OnSearchCommand}"></Button>
     </Grid>
 </Page>
