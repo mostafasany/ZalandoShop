@@ -2,7 +2,7 @@ using GalaSoft.MvvmLight.Command;
 using System.Collections.Generic;
 using System.Linq;
 using ZalandoShop.Models.Model;
-using ZalandoShop.Services.Services.DialogService;
+using ZalandoShop.Services.Services.Dialog;
 using ZalandoShop.Services.Services.Facet;
 using ZalandoShop.Services.Services.Internet;
 using ZalandoShop.Services.Services.Navigation;

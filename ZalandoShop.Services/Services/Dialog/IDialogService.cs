@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ZalandoShop.Services.Services.DialogService
+namespace ZalandoShop.Services.Services.Dialog
 {
     public interface IDialogService
     {

@@ -4,7 +4,7 @@ using ZalandoShop.Core.Services.Dialog;
 using ZalandoShop.Core.Services.Internet;
 using ZalandoShop.Core.Services.Navigation;
 using ZalandoShop.Services.Services.Article;
-using ZalandoShop.Services.Services.DialogService;
+using ZalandoShop.Services.Services.Dialog;
 using ZalandoShop.Services.Services.Facet;
 using ZalandoShop.Services.Services.Internet;
 using ZalandoShop.Services.Services.Navigation;

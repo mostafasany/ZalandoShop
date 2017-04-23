@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using System.Threading.Tasks;
 using ZalandoShop.Models.Model;
 using ZalandoShop.Services.Services.Article;
+using ZalandoShop.Services.Services.Facet;
 
 namespace ZalandoShop.Test
 {
@@ -67,6 +68,15 @@ namespace ZalandoShop.Test
             var results = await service.GetFilterdArticleAsync(search, 1, 20);
             int count = results.Count;
             Assert.AreEqual(0, count);
+        }
+
+        [TestMethod]
+        public async Task Should_Return_All_Facets()
+        {
+            IFacetService service = ServiceLocator.Current.GetInstance<IFacetService>();
+            var results = await service.GetAllFacetAsync();
+            int count = results.Count;
+            Assert.AreNotEqual(0, count);
         }
     }
 }

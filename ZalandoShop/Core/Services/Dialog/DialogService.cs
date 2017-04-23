@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
-using ZalandoShop.Services.Services.DialogService;
+using ZalandoShop.Services.Services.Dialog;
 
 namespace ZalandoShop.Core.Services.Dialog
 {
