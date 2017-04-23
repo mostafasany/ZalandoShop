@@ -95,11 +95,11 @@ namespace ZalandoShop.ViewModels.ViewModel
         void LoadSearchWords(FacetSearch facetSearch)
         {
             SearchWords = new ObservableCollection<SearchWord>();
-            SearchWords.Add(new SearchWord { Id = 1, Name = facetSearch.Gender.Name });
+            SearchWords.Add(new SearchWord { Id = 1, Name = facetSearch.Gender.Name, Image = "/Assets/Icons/BothGender.png" });
             if (facetSearch.Facet != null)
-                SearchWords.Add(new SearchWord { Id = 2, Name = facetSearch.Facet.Name });
+                SearchWords.Add(new SearchWord { Id = 2, Name = facetSearch.Facet.Name, Image = "/Assets/Icons/Filter.png" });
             if (facetSearch.Search != null)
-                SearchWords.Add(new SearchWord { Id = 3, Name = facetSearch.Search });
+                SearchWords.Add(new SearchWord { Id = 3, Name = facetSearch.Search, Image = "/Assets/Icons/Filter.png" });
         }
 
         #endregion
