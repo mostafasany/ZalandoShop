@@ -120,7 +120,13 @@
   <data name="Error" xml:space="preserve">
     <value>Error !</value>
   </data>
+  <data name="Men" xml:space="preserve">
+    <value>MEN</value>
+  </data>
   <data name="NoInternet" xml:space="preserve">
     <value>No internet connection</value>
+  </data>
+  <data name="Women" xml:space="preserve">
+    <value>WOMEN</value>
   </data>
 </root>

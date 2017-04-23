@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ZalandoShop.Models.Model;
-using ZalandoShop.Models.Response;
+using ZalandoShop.Models.Response.Articles;
 using ZalandoShop.Services.Services.Network;
 using ZalandoShop.Services.Translators;
 

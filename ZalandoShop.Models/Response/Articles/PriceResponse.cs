@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ZalandoShop.Models.Response
+﻿namespace ZalandoShop.Models.Response.Articles
 {
     public class PriceResponse
     {

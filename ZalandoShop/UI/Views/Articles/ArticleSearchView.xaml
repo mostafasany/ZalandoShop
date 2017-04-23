@@ -50,7 +50,7 @@
 
         </ListView>
 
-        <Button Grid.Row="5" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Right"
+        <Button Grid.Row="5" Width="50" Height="50" Margin="0,10,20,10"  VerticalAlignment="Center" HorizontalAlignment="Right"
                 Background="Transparent" Foreground="Transparent" ToolTipService.ToolTip="Refresh" Command="{Binding OnIntializeCommand}">
             <Image Source="/Assets/Icons/refresh.png"></Image>
         </Button>

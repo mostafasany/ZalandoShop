@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ZalandoShop.Models.Response
+namespace ZalandoShop.Models.Response.Articles
 {
     public class ArticlesResponse
     {

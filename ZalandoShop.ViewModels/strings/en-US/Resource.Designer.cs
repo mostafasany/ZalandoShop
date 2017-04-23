@@ -71,11 +71,29 @@ namespace ZalandoShop.ViewModels.strings.en_US {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MEN.
+        /// </summary>
+        internal static string Men {
+            get {
+                return ResourceManager.GetString("Men", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No internet connection.
         /// </summary>
         internal static string NoInternet {
             get {
                 return ResourceManager.GetString("NoInternet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WOMEN.
+        /// </summary>
+        internal static string Women {
+            get {
+                return ResourceManager.GetString("Women", resourceCulture);
             }
         }
     }
