@@ -234,6 +234,7 @@ namespace ZalandoShop.ViewModels.ViewModel
                 }
                 IsLoading = true;
                 IsPageEnabled = false;
+                pageNo = 1;
                 OnIntialize(FacetSearch);
             }
             catch (System.Exception ex)

@@ -24,11 +24,11 @@
                 <StackPanel   Orientation="Vertical" Margin="10">
                     <TextBlock Text="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="WrapWholeWords"></TextBlock>
                     <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center">
-                                      <Run Text="Size" />    
+                                      <Run x:Uid="Size" />    
                                       <Run Text="{Binding Size}" />
                     </TextBlock>
                     <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center">
-                                      <Run Text="Price" />    
+                                      <Run x:Uid="Price"  />    
                                       <Run Text="{Binding Price}" />
                     </TextBlock>
                 </StackPanel>

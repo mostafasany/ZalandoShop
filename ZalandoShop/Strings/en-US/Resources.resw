@@ -123,10 +123,16 @@
   <data name="NoArticlesFound.Text" xml:space="preserve">
     <value>No Products Found</value>
   </data>
+  <data name="Price.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
   <data name="Search.Content" xml:space="preserve">
     <value>Search</value>
   </data>
   <data name="SearchBar.PlaceholderText" xml:space="preserve">
     <value>Search for Brands,Categories, .....</value>
+  </data>
+  <data name="Size.Text" xml:space="preserve">
+    <value>Size</value>
   </data>
 </root>
