@@ -16,9 +16,9 @@
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ZalandoShop.App">
       <uap:VisualElements DisplayName="Zalando Shop" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Zalando SE is a European electronic commerce company seated in Berlin. The company maintains a cross-platform online store that sells shoes, clothing and other fashion items. The company was founded in Germany in 2008, and since has begun operating in fourteen European countries and worldwide with spin-offs and subsidiary companies." BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="Zalando Shop">
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#ff6f0e" />
       </uap:VisualElements>
     </Application>
   </Applications>
