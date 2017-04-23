@@ -141,21 +141,25 @@ namespace ZalandoShop.ViewModels.ViewModel
 
         #region OnFacetSelectedCommand
 
-        RelayCommand<Facet> _OnFacetSelectedCommand;
-        public RelayCommand<Facet> OnFacetSelectedCommand
+        RelayCommand<object> _OnFacetSelectedCommand;
+        public RelayCommand<object> OnFacetSelectedCommand
         {
             get
             {
                 if (_OnFacetSelectedCommand == null)
-                    _OnFacetSelectedCommand = new RelayCommand<Facet>(OnFacetSelected);
+                    _OnFacetSelectedCommand = new RelayCommand<object>(OnFacetSelected);
                 return _OnFacetSelectedCommand;
             }
         }
 
-        private void OnFacetSelected(Facet facet)
+        private void OnFacetSelected(object obj)
         {
-            var paramters = new FacetSearch { Gender = SelectedGender, Facet = facet, Search = null };
-            _navigationService.Navigate(Models.Enum.PageType.ArticlesSearchResult, paramters);
+            if (obj is Facet)
+            {
+                var facet = obj as Facet;
+                var paramters = new FacetSearch { Gender = SelectedGender, Facet = facet, Search = null };
+                _navigationService.Navigate(Models.Enum.PageType.ArticlesSearchResult, paramters);
+            }
         }
         #endregion
 

@@ -129,6 +129,7 @@ namespace ZalandoShop.ViewModels.ViewModel
                     return;
                 }
                 NoArticles = false;
+                Articles = new ObservableCollection<Article>();
                 FacetSearch = search;
                 IsLoading = true;
                 IsPageEnabled = false;
