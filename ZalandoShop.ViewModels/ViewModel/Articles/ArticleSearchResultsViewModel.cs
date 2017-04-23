@@ -210,6 +210,46 @@ namespace ZalandoShop.ViewModels.ViewModel
 
         #endregion
 
+        #region OnRefreshCommand
+
+        RelayCommand _OnRefreshCommand;
+        public RelayCommand OnRefreshCommand
+        {
+            get
+            {
+                if (_OnRefreshCommand == null)
+                    _OnRefreshCommand = new RelayCommand(OnRefresh);
+                return _OnRefreshCommand;
+            }
+        }
+
+        private async void OnRefresh()
+        {
+            try
+            {
+                if (!_internetService.IsInternet())
+                {
+                    await _dialogService.ShowMessage(Resource.NoInternet, Resource.Error);
+                    return;
+                }
+                IsLoading = true;
+                IsPageEnabled = false;
+                OnIntialize(FacetSearch);
+            }
+            catch (System.Exception ex)
+            {
+                await _dialogService.ShowMessage(ex.Message, Resource.Error);
+            }
+            finally
+            {
+                IsLoading = false;
+                IsPageEnabled = true;
+            }
+
+        }
+
+        #endregion
+
         #endregion
     }
 }

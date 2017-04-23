@@ -120,6 +120,7 @@
     <Content Include="Assets\Articles\productnotfound.jpg" />
     <Content Include="Assets\Gender\Female.png" />
     <Content Include="Assets\Gender\Male.png" />
+    <Content Include="Assets\Icons\refresh.png" />
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-125.png" />
