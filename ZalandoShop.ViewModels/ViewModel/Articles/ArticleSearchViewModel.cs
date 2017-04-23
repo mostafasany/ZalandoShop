@@ -32,8 +32,8 @@ namespace ZalandoShop.ViewModels.ViewModel
 
         #region Properties
 
-        private List<Models.Model.Gender> _GenderList;
-        public List<Models.Model.Gender> GenderList
+        private List<Gender> _GenderList;
+        public List<Gender> GenderList
         {
             get { return _GenderList; }
             set { _GenderList = value; RaisePropertyChanged(); }
@@ -46,8 +46,8 @@ namespace ZalandoShop.ViewModels.ViewModel
             set { _SelectedGender = value; RaisePropertyChanged(); }
         }
 
-        private List<Models.Model.Facet> _Facets;
-        public List<Models.Model.Facet> Facets
+        private List<Facet> _Facets;
+        public List<Facet> Facets
         {
             get { return _Facets; }
             set { _Facets = value; RaisePropertyChanged(); }
@@ -68,8 +68,7 @@ namespace ZalandoShop.ViewModels.ViewModel
             }
         }
 
-
-        public List<Models.Model.Facet> FilteredFacets
+        public List<Facet> FilteredFacets
         {
             get
             {
