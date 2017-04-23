@@ -155,6 +155,10 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="UI\Styles\DataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Views\Articles\ArticleSearchResultsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

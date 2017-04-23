@@ -33,9 +33,11 @@ namespace ZalandoShop.ViewModels.ViewModel
 
         #region Properties
 
+        private bool _NoArticles = false;
         public bool NoArticles
         {
-            get { return Articles == null || Articles.Count == 0 ? true : false; }
+            get { return _NoArticles; }
+            set { _NoArticles = value; RaisePropertyChanged(); }
         }
 
         private ObservableCollection<Models.Model.Article> _Articles;
@@ -46,7 +48,7 @@ namespace ZalandoShop.ViewModels.ViewModel
             {
                 _Articles = value;
                 RaisePropertyChanged();
-                RaisePropertyChanged(() => NoArticles);
+
             }
         }
 
@@ -96,12 +98,21 @@ namespace ZalandoShop.ViewModels.ViewModel
                     await _dialogService.ShowMessage(Resource.NoInternet, Resource.Error);
                     return;
                 }
+                NoArticles = false;
                 FacetSearch = search;
                 IsLoading = true;
                 IsPageEnabled = false;
                 var articles = await _articleService.GetFilterdArticleAsync(FacetSearch, pageNo, pageSize);
                 if (articles != null)
+                {
+                    NoArticles = (articles.Count == 0);
                     Articles = new ObservableCollection<Article>(articles);
+                }
+                else
+                {
+                    NoArticles = true;
+                    Articles = new ObservableCollection<Article>();
+                }
             }
             catch (System.Exception ex)
             {

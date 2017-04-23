@@ -44,7 +44,7 @@
             </GridView.ItemTemplate>
         </GridView>
 
-        <ListView Grid.Row="3" ItemsSource="{Binding FilteredFacets}" Name="lstFilterFacts">
+        <ListView Grid.Row="3" ItemTemplate="{StaticResource ArticleSearchTemplate}" ItemsSource="{Binding FilteredFacets}" Name="lstFilterFacts">
             <i:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="SelectionChanged">
                     <core:InvokeCommandAction Command="{Binding OnFacetSelectedCommand}" 
@@ -52,17 +52,7 @@
                     </core:InvokeCommandAction>
                 </core:EventTriggerBehavior>
             </i:Interaction.Behaviors>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
-                        <Grid Width="48" Height="48" VerticalAlignment="Center" Margin="12,0,12,0">
-                            <Ellipse  Fill="Gray"/>
-                            <TextBlock Text="{Binding NameInitital}" Foreground="White" FontSize="18" TextLineBounds="Tight" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Grid>
-                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center"></TextBlock>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+
         </ListView>
 
         <Button  Grid.Row="4" x:Uid="Search"  Style="{StaticResource MainButtonStyle}" HorizontalAlignment="Center" Margin="0,10,0,10"  Command="{Binding OnSearchCommand}"></Button>
