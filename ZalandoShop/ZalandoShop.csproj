@@ -117,6 +117,7 @@
     <None Include="ZalandoShop_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Articles\productnotfound.jpg" />
     <Content Include="Assets\Gender\Female.png" />
     <Content Include="Assets\Gender\Male.png" />
     <Content Include="Properties\Default.rd.xml" />

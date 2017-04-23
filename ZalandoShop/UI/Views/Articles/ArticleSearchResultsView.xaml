@@ -78,6 +78,11 @@
                   SelectedItem="{Binding SelectedArticles,Mode=TwoWay}">
         </GridView>
 
+        <StackPanel  Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical"  Visibility="{Binding NoArticles,Converter={StaticResource BoolToVisibilityConverter}}" >
+            <Image Width="200" Height="200" Source="/Assets/Articles/productnotfound.jpg"></Image>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"  x:Uid="NoArticlesFound" Foreground="Red" ></TextBlock>
+
+        </StackPanel>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="Small">

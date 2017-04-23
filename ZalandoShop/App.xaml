@@ -8,7 +8,14 @@
     RequestedTheme="Light">
 
     <Application.Resources>
+        <Color x:Key="MainColor">#ff6f0e</Color>
+        <SolidColorBrush x:Key="sbMainColor" Color="{StaticResource MainColor}" />
         <vm:ViewModelLocator x:Key="Locator" />
         <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"></converter:BoolToVisibilityConverter>
+
+        <Style x:Key="MainButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource sbMainColor}"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+        </Style>
     </Application.Resources>
 </Application>
