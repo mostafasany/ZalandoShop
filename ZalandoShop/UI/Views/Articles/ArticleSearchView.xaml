@@ -31,7 +31,7 @@
         <AutoSuggestBox Text="{Binding FilterText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                         ItemsSource="{Binding FilteredFacets}"
                         Grid.Row="1" Margin="10,10" 
-                        x:Name="autoSuggestBox" x:Uid="SearchBar" QueryIcon="Find" Width="450"           
+                        x:Name="autoSuggestBox" x:Uid="SearchBar" QueryIcon="Find" Width="350"           
                 SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>
 
         <ProgressBar Grid.Row="2" IsIndeterminate="{Binding IsLoading}" Background="Transparent"></ProgressBar>
@@ -55,6 +55,6 @@
             <Image Source="/Assets/Icons/refresh.png"></Image>
         </Button>
 
-        <Button  Grid.Row="5" x:Uid="Search" Width="300"  Style="{StaticResource MainButtonStyle}" HorizontalAlignment="Center" Margin="0,10,0,10"  Command="{Binding OnSearchCommand}"></Button>
+        <Button  Grid.Row="5" x:Uid="Search" Width="200"  Style="{StaticResource MainButtonStyle}" HorizontalAlignment="Center" Margin="0,10,0,10"  Command="{Binding OnSearchCommand}"></Button>
     </Grid>
 </Page>
