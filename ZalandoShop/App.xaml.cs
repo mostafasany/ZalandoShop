@@ -54,15 +54,13 @@ namespace ZalandoShop
                 Window.Current.Content = rootFrame;
             }
 
-            var api = "Windows.Phone.UI.Input.HardwareButtons";
-            if (!Windows.Foundation.Metadata.ApiInformation.IsTypePresent(api))
-            {
-                SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
 
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
 
-                ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = Colors.Orange;
-            }
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+
+            ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = Colors.Orange;
+
 
             if (e.PrelaunchActivated == false)
             {
@@ -80,6 +78,7 @@ namespace ZalandoShop
 
         private void OnBackRequested(object sender, BackRequestedEventArgs e)
         {
+            e.Handled = true;
             if (rootFrame.CanGoBack)
                 rootFrame.GoBack();
         }
