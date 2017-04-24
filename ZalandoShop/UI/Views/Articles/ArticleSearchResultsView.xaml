@@ -38,9 +38,9 @@
             </GridView>
         </StackPanel>
 
-        <GridView  x:Name="grdViewArticles" Grid.Row="4"  Margin="10,0,0,10" HorizontalAlignment="Stretch" ItemsSource="{Binding Articles}"
+        <GridView  x:Name="grdViewArticles" SelectionMode="None" Grid.Row="4"  Margin="10,0,0,10" HorizontalAlignment="Stretch" ItemsSource="{Binding Articles}"
                   SelectedItem="{Binding SelectedArticles,Mode=TwoWay}">
-        </GridView>
+        </GridView> 
 
         <StackPanel  Grid.Row="4"  VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical"  Visibility="{Binding NoArticles,Converter={StaticResource BoolToVisibilityConverter}}" >
             <Image Width="200" Height="200" Source="/Assets/Articles/productnotfound.jpg"></Image>

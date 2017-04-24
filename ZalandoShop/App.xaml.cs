@@ -62,10 +62,7 @@ namespace ZalandoShop
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
 
                 ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = Colors.Orange;
-
             }
-
-
 
             if (e.PrelaunchActivated == false)
             {
