@@ -37,6 +37,7 @@ namespace ZalandoShop.Core
             SimpleIoc.Default.Register<IArticleService, ArticleService>();
             SimpleIoc.Default.Register<IFacetService, FacetService>();
         }
+
         public ArticleSearchViewModel ArticleSearchViewModel
         {
             get
