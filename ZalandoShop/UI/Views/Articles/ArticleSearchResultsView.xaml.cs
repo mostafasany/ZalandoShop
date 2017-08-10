@@ -23,7 +23,6 @@ namespace ZalandoShop.UI.Views.Articles
             this.InitializeComponent();
             vm = this.DataContext as ArticleSearchResultsViewModel;
             Loaded += OnLoaded;
-            this.CacheMode.
         }
 
         void OnLoaded(object sender, RoutedEventArgs e)
